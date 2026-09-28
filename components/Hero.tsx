@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useReducedMotion as useFramerReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import HeroFallback from "@/components/three/HeroFallback";
+import CanvasErrorBoundary from "@/components/three/CanvasErrorBoundary";
 import { useReducedMotion, useWebGLSupported } from "@/hooks/useReducedMotion";
 import { site } from "@/data/site";
 
@@ -58,7 +59,9 @@ export default function Hero() {
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         {show3D ? (
-          <HeroScene progressRef={progressRef} mobile={mobile} />
+          <CanvasErrorBoundary>
+            <HeroScene progressRef={progressRef} mobile={mobile} />
+          </CanvasErrorBoundary>
         ) : (
           <HeroFallback />
         )}

@@ -2,7 +2,7 @@
 
 import { useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, Float, MeshDistortMaterial } from "@react-three/drei";
+import { Float, MeshDistortMaterial } from "@react-three/drei";
 import * as THREE from "three";
 
 type ProgressRef = { current: { value: number } };
@@ -28,9 +28,11 @@ function Pane({
         <MeshDistortMaterial
           color="#C9A24B"
           transparent
-          opacity={0.14}
-          roughness={0.15}
-          metalness={0.6}
+          opacity={0.16}
+          roughness={0.3}
+          metalness={0.1}
+          emissive="#C9A24B"
+          emissiveIntensity={0.15}
           distort={0.18}
           speed={0.6}
           side={THREE.DoubleSide}
@@ -84,10 +86,10 @@ function Scene({ progressRef, mobile }: { progressRef: ProgressRef; mobile: bool
 
   return (
     <>
-      <ambientLight intensity={0.25} />
+      <ambientLight intensity={0.4} />
       <pointLight ref={light} position={[3, 2, 4]} intensity={18} color="#C9A24B" />
-      <pointLight position={[-4, -2, -3]} intensity={4} color="#4A3A1A" />
-      <Environment preset="city" />
+      <pointLight position={[-4, -2, -3]} intensity={6} color="#4A3A1A" />
+      <pointLight position={[0, 3, -5]} intensity={5} color="#F4F1EA" />
       <group ref={group}>
         {panes.map((p, i) => (
           <Pane key={i} {...p} />
