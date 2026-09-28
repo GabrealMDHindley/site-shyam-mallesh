@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background-color: #07080b;
+  color: #f4f1ea;
+}
+
+* {
+  scrollbar-color: #8b7538 #12141a;
+}
+
+.section-label {
+  @apply text-xs uppercase tracking-widest2 text-brass/80 font-sans;
+}
+
+.hairline {
+  @apply border-t border-white/10;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-brass px-7 py-3 text-sm font-medium text-ink transition-all duration-500 ease-expo hover:bg-bone hover:scale-[1.02] active:scale-[0.98];
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-7 py-3 text-sm font-medium text-bone transition-all duration-500 ease-expo hover:border-brass hover:text-brass;
+}
+
+.field {
+  @apply w-full rounded-lg border border-white/15 bg-surface/60 px-4 py-3 text-sm text-bone placeholder:text-bone/35 outline-none transition-colors duration-300 focus:border-brass;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
